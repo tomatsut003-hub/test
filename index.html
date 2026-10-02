@@ -1,0 +1,393 @@
+<!DOCTYPE html>                      <!-- このHTML文書がHTML5で記述されていることを宣言 -->
+<html lang="ja">                     <!-- ページ全体の言語を日本語に設定 -->
+  <head>                             <!-- ページの設定情報を記述する領域。通常は画面には表示されない -->
+    <meta charset="UTF-8">           <!-- 文字コードをUTF-8に設定し、日本語などの文字化けを防ぐ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <!-- スマートフォンなどの画面幅に合わせて表示を最適化 -->
+    <title>新潟第一梱包運輸</title>    <!-- ブラウザのタブや検索結果などに表示されるページタイトル -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">    <!-- Google Fontsへの接続を事前に開始して、フォント読み込みを高速化 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    <!-- Google Fontsのフォントファイル配信先への接続を事前に開始 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700;800;900&family=Montserrat:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet">              <!-- M PLUS 1p と Montserrat フォントを読み込む -->
+    <link rel="stylesheet" href="css/style.css">    <!-- 外部CSSファイルを読み込み、ページ全体のデザインを適用 -->
+  </head>
+
+  <body>                             <!--==================== 実際にブラウザ画面へ表示されるコンテンツ ====================-->
+
+    <!-- ================================================================================================================ -->
+    <!-- ヘッダー 会社ロゴ 会社名    メニュー[会社情報][安全への取り組み][採用情報][お問合せ] -->
+    <!-- ================================================================================================================ -->
+    <header class="header">
+
+      <!------------------------ ロゴ画像と会社名をまとめてindex.htmlへリンク ------------------------>
+      <a href="index.html" class="header__brand">
+        <!---------------------- 左側のロゴ画像 ---------------------->
+        <img
+          src="images/d1logo.png"
+          alt="新潟第一梱包運輸"
+          class="header__logo-image">
+        <!---------------------- 会社名 ---------------------->
+        <div class="header__logo">
+          新潟第一梱包運輸
+        </div>
+      </a>
+      <!-- ==================== PC用ナビゲーション ==================== -->
+      <nav class="header__nav">
+        <ul>
+
+          <li>
+            <a href="company.html">
+              <!-- 日本語 → 英語の切り替え表示領域 -->
+              <span class="header-nav-text" data-text="会社情報">会社情報</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="management.html">
+              <!-- 日本語 → 英語の切り替え表示領域 -->
+              <span class="header-nav-text" data-text="安全への取り組み">安全への取り組み</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="recruit.html">
+              <!-- 日本語 → 英語の切り替え表示領域 -->
+              <span class="header-nav-text" data-text="採用情報">採用情報</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html">
+              <!-- 日本語 → 英語の切り替え表示領域 -->
+              <span class="header-nav-text" data-text="お問合せ">お問合せ</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- ==================== スマートフォン用ハンバーガーメニュー ==================== -->
+
+      <!---------------------- スマートフォン画面で表示するメニューボタンJavaScriptで開閉状態を切り替える ---------------------->
+      <button
+        class="hamburger-button"
+        type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="mobile-menu" >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- ---------------------- スマートフォン用ハンバーガーメニュー ---------------------- -->
+      <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <ul>
+          <li>
+            <a href="index.html">
+              <span class="mobile-menu-jp">ホーム</span>
+              <span class="mobile-menu-en">HOME</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="company.html">
+              <span class="mobile-menu-jp">会社情報</span>
+              <span class="mobile-menu-en">COMPANY</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="management.html">
+              <span class="mobile-menu-jp">安全への取り組み</span>
+              <span class="mobile-menu-en">SAFETY</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="recruit.html">
+              <span class="mobile-menu-jp">採用情報</span>
+              <span class="mobile-menu-en">RECRUIT</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html">
+              <span class="mobile-menu-jp">お問合せ</span>
+              <span class="mobile-menu-en">CONTACT</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="tel:0252755066" class="mobile-menu-contact">          <!-- 電話でのお問合せ -->
+                <span class="mobile-menu-jp">電話でのお問合せ</span>
+                <span class="mobile-menu-en">TEL CONTACT</span>
+                <span class="mobile-menu-contact-tel">025-275-5066</span>  <!-- 電話番号をTEL CONTACTの下に表示 -->
+            </a>
+           </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ================================================================================================================ -->
+    <!-- HEROセクション 動画 会社名 説明 -->
+    <!-- ================================================================================================================ -->
+
+    <section class="section-hero">      <!-- ページ最初に表示されるメインビジュアルセクション -->
+      <div class="video-wrap">          <!-- 背景動画を配置するためのラッパー -->
+
+       <!-- 背景動画
+          autoplay  : ページ表示時に自動再生
+          loop      : 動画終了後に繰り返し再生
+          muted     : 音声をミュート
+          playsinline : スマートフォンでも全画面化せずページ内で再生
+       -->
+        <video
+          class="bg-video"
+          src="images/bg-video.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="auto">
+        </video>
+
+        <!-- 背景動画が再生できない場合に表示する代替画像  通常時はCSSで非表示にしておき、
+             JavaScriptで動画再生エラーを検知した場合のみ表示する
+        -->
+        <img
+          class="hero-fallback-image"
+          src="images/HERO_Photo01.jpg"
+          alt=""
+        >
+
+      </div>
+      <div class="hero-content">                           <!-- HERO内に表示する会社名とメッセージをまとめるコンテナ -->
+        <h1 class="hero-title">新潟第一梱包運輸</h1>        <!-- ページのメインタイトル。GSAPでフェード・ぼかしアニメーションを適用 -->
+         <div class="hero-lead-container">                 <!-- HEROの説明文を縦方向にまとめるコンテナ -->
+            <p class="hero-lead-item">物流を支援することにより、</p>          <!-- HERO説明文1行目 -->
+            <p class="hero-lead-item">革新的な価値を創造し、</p>              <!-- HERO説明文2行目 -->
+            <p class="hero-lead-item">社会の発展に貢献しています。</p>        <!-- HERO説明文3行目 -->
+         </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================================================ -->
+    <!-- BUSINESSセクション 事業内容 左画像 右説明 -->
+    <!-- ================================================================================================================ -->
+
+    <section class="section-business">            <!-- 事業内容全体を表示するスクロール連動セクション -->
+      <div class="business-sticky">               <!-- スクロール中に画面内へ固定表示されるコンテンツ領域 -->
+        <!-- ---------- 事業内容タイトル ---------- -->
+        <div class="business-title-trigger">      <!-- スクロールに合わせて中央から上方向へ移動するタイトル -->
+          <h2 class="biz-main-title">事業内容</h2> <!-- 事業内容のメインタイトル -->
+          <p class="biz-sub-title">Business Description</p>          <!-- 事業内容の英語サブタイトル -->
+        </div>
+
+        <!-- ---------- BUSINESS本体 ---------- -->
+        <div class="business-container">          <!-- 左側の画像と右側の説明文を横並びに配置するコンテナ -->
+          <!-- 左側：事業内容の画像 -->
+          <div class="business-left">             <!-- 左側の画像表示エリア -->
+            <div class="image-shutter-wrap">      <!-- 画像の表示範囲を固定し、内部画像の移動を制御するラッパー -->
+              <div class="biz-img-panel">         <!-- BUSINESS 01 の画像パネル -->
+                <img
+                  src="images/business1.jpg"
+                  alt="一般貨物自動車運送事業"
+                >
+                <!-- ---------- 一般貨物自動車運送事業の画像 ---------- -->
+              </div>
+              <div class="biz-img-panel">                <!-- BUSINESS 02 の画像パネル -->
+                <img
+                  src="images/business2.jpg"
+                  alt="産業廃棄物収集運搬業"
+                >
+                <!-- ---------- 産業廃棄物収集運搬業の画像 ---------- -->
+              </div>
+              <div class="biz-img-panel">                <!-- BUSINESS 03 の画像パネル -->
+                <img
+                  src="images/business3.jpg"
+                  alt="倉庫事業"
+                >
+                <!-- ---------- 倉庫事業の画像 ---------- -->
+              </div>
+              <div class="biz-img-panel">                <!-- BUSINESS 04 の画像パネル -->
+                <img
+                  src="images/business4.jpg"
+                  alt="貨物利用運送事業"
+                >
+                <!-- ---------- 貨物利用運送事業の画像 ---------- -->
+              </div>
+            </div>
+          </div>
+
+          <!-- ---------- 右側：事業内容の説明テキスト ---------- -->
+          <div class="business-right">                 <!-- スクロールに合わせて説明文を切り替える右側エリア -->
+            <div class="biz-text-content">             <!-- BUSINESS 01 のテキスト -->
+              <h3>一般貨物自動車運送事業</h3>            <!-- BUSINESS 01 の事業タイトル -->
+              <p>
+                車両1台を貸し切り、ニーズに合わせて運ぶ「貸切輸送」。工場から店舗まで、商品の特性に応じて安全・確実にお届けします。混載できない大型製品や精密機器などの繊細な商材に最適です。
+              </p>
+              <!-- ---------- BUSINESS 01 の詳細説明 ---------- -->
+            </div>
+            <div class="biz-text-content">             <!-- BUSINESS 02 のテキスト -->
+              <h3>産業廃棄物収集運搬業</h3>              <!-- BUSINESS 02 の事業タイトル -->
+              <p>
+                委託契約に基づき、廃棄物を安全・適正に収集・運搬します。飛散や流出を防ぎ、処分業者まで迅速に輸送。お客様の状況に合わせ、廃棄物の種類に応じた各種許可の取得・対応も柔軟に対応いたします。              </p>
+              <!-- ---------- BUSINESS 02 の詳細説明 ---------- -->
+            </div>
+            <div class="biz-text-content">             <!-- BUSINESS 03 のテキスト -->
+              <h3>倉庫事業</h3>                         <!-- BUSINESS 03 の事業タイトル -->
+              <p>
+                商品の特性（原料・冷凍品等）に合わせ、安全・適切に保管する倉庫サービスです。ピッキングなどの各種作業にも対応。保管から配送まで一貫サポートし、お客様の物流業務の効率化に貢献します。              </p>
+              <!-- ---------- BUSINESS 03 の詳細説明 ---------- -->
+            </div>
+            <div class="biz-text-content">             <!-- BUSINESS 04 のテキスト -->
+              <h3>貨物利用運送事業</h3>                  <!-- BUSINESS 04 の事業タイトル -->
+              <p>
+                国内外の貨物特性に合わせ、最適な輸送手段を組み合わせるサービスです。鉄道・海運・空輸などから最適なルートを選択し、安全・確実にお届けします。              </p>
+              <!-- ---------- BUSINESS 04 の詳細説明 ---------- -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================================================ -->
+    <!-- GROUP COMPANYセクション グループ会社 3ボタン -->
+    <!-- ================================================================================================================ -->
+
+    <section class="section-group">                           <!-- グループ会社へのリンクを表示するセクション -->
+      <div class="group-bg"></div>                            <!-- 背景画像を表示し、スクロール時にパララックス移動する要素 -->
+      <div class="group-inner">                               <!-- グループ会社のタイトルとボタンをまとめるコンテナ -->
+        <h2 class="group-title">グループ会社</h2>              <!-- グループ会社セクションのメインタイトル -->
+        <p class="group-sub">GROUP COMPANY</p>                <!-- 英語のサブタイトル -->
+        <div class="group-buttons">                           <!-- グループ会社へのリンクボタンを横並びに配置 -->
+          <a href="http://www.dthd.net/" target="_blank" rel="noopener noreferrer" class="btn-item">                       <!-- グループ会社1へのリンク -->
+            <img src="images/btn1.png" alt="ディー・ティー・ホールディングス">    <!-- グループ会社1のボタン画像 -->
+          </a>
+          <a href="https://www.daiichi-kamotsu.co.jp/" target="_blank" rel="noopener noreferrer" class="btn-item">         <!-- グループ会社2へのリンク -->
+            <img src="images/btn2.png" alt="第一貨物株式会社">    <!-- グループ会社2のボタン画像 -->
+          </a>
+          <a href="groups.html" class="btn-item">               <!-- グループ会社3へのリンク -->
+            <img src="images/btn3.png" alt="関係会社">           <!-- グループ会社3のボタン画像 -->
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================================================ -->
+    <!-- MAPセクション 左Google Map 右 会社名 -->
+    <!-- ================================================================================================================ -->
+
+    <section class="section-map" id="section-map">      <!-- 会社所在地と地図を表示するセクション -->
+      <div class="map-left">                            <!-- 左側：Googleマップを表示する領域 -->
+        <!-- Googleマップの埋め込み表示 -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12590.667232355478!2d139.1165929!3d37.91485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6c6a0f08d5f23e32!2z5paw5r2f56ys5LiA5qKx5YyF6YGL6Ly477yI5qCq77yJ!5e0!3m2!1sja!2sjp!4v1554164142397!5m2!1sja!2sjp"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          title="新潟第一梱包運輸 所在地">
+        </iframe>
+      <!-- Googleマップを埋め込むiframe。loading="lazy"で必要になるまで読み込みを遅延 -->
+      </div>
+
+      <div class="map-right">                          <!-- 右側：会社情報を表示する領域 -->
+        <div class="map-info">                         <!-- GSAPで下からふわっと表示される会社情報 -->
+          <h3>会社所在地</h3>                           <!-- 所在地セクションの見出し -->
+          <p class="company-name">新潟第一梱包運輸 株式会社</p>          <!-- 会社名 -->
+          <p class="address">
+            〒950-0892<br>
+            新潟県新潟市東区寺山字前沢596-1
+          </p>
+          <!-- 郵便番号と住所 -->
+          <p class="tel">TEL: 025-275-5066</p>         <!-- 電話番号 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================================================================ -->
+    <!-- FOOTERセクション 透かしマーク 会社名 メニュー -->
+    <!-- ================================================================================================================ -->
+
+    <footer class="footer">                            <!-- ページ最下部に表示するフッター -->
+        <div class="footer-light"></div>               <!-- フッター内を移動する光のエフェクト -->
+        <div class="footer-inner">                     <!-- フッター内のコンテンツ全体 -->
+
+            <!-- ---------- FOOTER MAIN ---------- -->
+
+            <div class="footer-main">                  <!-- 左：会社情報 / 中央：ナビゲーション / 右：お問い合わせ -->
+                <div class="footer-company">           <!-- ---------- 左側：会社情報 ---------- -->
+                    <!-- ---------- FOOTER LOGO ---------- -->
+                    <div class="footer-logo">          <!-- フッターに表示する会社名 -->
+                        <span class="footer-logo-name">新潟第一梱包運輸</span>
+                        <span class="footer-logo-type">株式会社</span>
+                    </div>
+
+                    <p class="footer-address">         <!-- 会社住所 -->
+                        〒950-0892<br>
+                        新潟県新潟市東区寺山字前沢596-1
+                    </p>
+                </div>
+
+                <!-- ---------- 中央〜右側：フッターナビゲーション ---------- -->
+                <nav class="footer-navigation">
+                    <!-- ---------- フッター用サイトリンク ---------- -->
+                    <ul class="footer-links">
+                        <li>
+                            <a href="index.html">
+                                <span class="footer-link-text" data-text="ホーム">ホーム</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="company.html">
+                                <span class="footer-link-text" data-text="会社情報">会社情報</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="management.html">
+                                <span class="footer-link-text" data-text="安全への取り組み">安全への取り組み</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="groups.html">
+                                <span class="footer-link-text" data-text="関係会社">関係会社</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="recruit.html">
+                                <span class="footer-link-text" data-text="採用情報">採用情報</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="privacy.html">
+                                <span class="footer-link-text" data-text="プライバシーポリシー">プライバシーポリシー</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="footer-contact-buttons">                                    <!-- ---------- 右側：お問合せ・電話 ---------- -->
+                    <a href="contact.html" class="footer-contact-btn">                             <!-- お問合せ -->
+                        <span class="footer-contact-icon" aria-hidden="true">✉</span>  <!-- ---------- メールアイコン ---------- -->
+                        <span class="footer-contact-text">お問合せ</span>                <!-- ---------- リンク文字 ---------- -->
+                    </a>
+
+                    <a href="tel:0252755066" class="footer-contact-btn">                             <!-- ---------- 電話でのお問合せ ---------- -->
+                        <span class="footer-contact-icon" aria-hidden="true">☎</span>  <!-- ---------- 電話アイコン ---------- -->
+                        <span class="footer-contact-text">電話でのお問合せ</span>        <!-- ---------- リンク文字 ---------- -->
+                    </a>
+                </div>
+            </div>
+
+            <p class="copyright">                                   <!-- ---------- 著作権表示 ---------- -->
+                &copy; 2026 新潟第一梱包運輸 All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==================== JavaScriptライブラリ ==================== -->
+    <script src="js/lenis.min.js"></script>            <!-- Lenis：滑らかなスクロール表現を行うライブラリ -->
+    <script src="js/gsap.min.js"></script>             <!-- GSAP：アニメーションを制御するJavaScriptライブラリ -->
+    <script src="js/ScrollTrigger.min.js"></script>    <!-- GSAP ScrollTrigger：スクロール位置に合わせてアニメーションを制御 -->
+    <script src="js/main.js"></script>                 <!-- index.htmlのアニメーション・スクロール処理 -->
+  </body>
+</html>

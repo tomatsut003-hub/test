@@ -1,0 +1,910 @@
+/* ==================================================
+   CONTACT PAGE
+   お問い合わせページ専用スタイル
+   ================================================== */
+
+
+/* ==================================================
+   CONTACT PAGE 全体
+   ================================================== */
+
+/* お問い合わせページ全体 */
+.section-contact {
+  position: relative;                 /* 背景画像と本文を重ねる基準 */
+  min-height: 100vh;                  /* 最低でも画面いっぱいの高さ */
+  padding: 150px 7% 120px;            /* 上下左右の余白 */
+  background: #000;                   /* ページ全体の背景を黒にする */
+  color: #fff;                        /* 基本文字色を白にする */
+  isolation: isolate;                 /* 背景レイヤーをこの範囲内に分離 */
+  overflow: hidden;                   /* 背景画像のはみ出しを隠す */
+}
+
+
+/* ==================================================
+   固定背景画像
+   management.cssと同じ背景画像を使用
+   ================================================== */
+
+/* お問い合わせページの固定背景 */
+.contact-fixed-background {
+  position: fixed;                    /* 画面に固定 */
+  top: -20%;                          /* 上側を少し広く確保 */
+  right: 0;                           /* 右端 */
+  bottom: -8%;                        /* 下側を少し広く確保 */
+  left: 0;                            /* 左端 */
+  z-index: -2;                        /* 本文の背面に配置 */
+  background-color: #00a73c;          /* 背景画像読み込み前の緑色 */
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.42) 55%,
+      rgba(0, 0, 0, 0.72) 100%
+    ),
+    url("../images/Company-bg.jpg");
+  /* managementページと同じCompany-bg.jpgを使用 */
+
+  background-position: 40% center;    /* 背景画像の表示位置 */
+  background-size: cover;             /* 画面いっぱいに表示 */
+  background-repeat: no-repeat;       /* 背景画像を繰り返さない */
+  pointer-events: none;               /* マウス操作を受け付けない */
+  will-change: transform;             /* GSAPによる移動を最適化 */
+  transform: translate3d(0, 0, 0);    /* GPU描画を使用 */
+}
+
+
+/* 背景画像の上下端に余裕を持たせる */
+.contact-fixed-background::after {
+  content: "";                        /* 疑似要素を表示 */
+  position: absolute;                 /* 背景要素を基準に配置 */
+  top: -10%;                          /* 上側へ余裕を追加 */
+  right: 0;                           /* 右端 */
+  bottom: -10%;                       /* 下側へ余裕を追加 */
+  left: 0;                            /* 左端 */
+  background: inherit;                /* 背景画像を継承 */
+  z-index: -1;                        /* 背景より背面 */
+  pointer-events: none;               /* マウス操作を無効化 */
+}
+
+
+/* ==================================================
+   ページ本文
+   ================================================== */
+
+/* お問い合わせページ本文全体 */
+.contact-page-content {
+  position: relative;                 /* レイヤー配置の基準 */
+  z-index: 1;                         /* 背景画像より前面 */
+  width: 100%;                        /* 横幅いっぱい */
+  max-width: 1400px;                  /* 最大横幅 */
+  margin: 0 auto;                     /* 中央配置 */
+}
+
+
+/* ==================================================
+   CONTACT HERO
+   ================================================== */
+
+/* CONTACTページのタイトルエリア */
+.contact-hero {
+  display: flex;                      /* 子要素を配置 */
+  align-items: center;                /* 縦方向中央 */
+  min-height: 360px;                  /* HERO部分の最低高さ */
+  margin-bottom: 100px;               /* 下側の余白 */
+  padding: 60px 7%;                   /* 内側の余白 */
+  background: transparent;            /* 背景を透明にする */
+  border: none;                       /* 枠線を表示しない */
+}
+
+
+/* HERO内部 */
+.contact-hero-content {
+  width: 100%;                        /* 横幅いっぱい */
+}
+
+
+/* HEROタイトル */
+.contact-title {
+  font-family:
+    "Montserrat",
+    "Noto Sans JP",
+    sans-serif;                       /* 英字・日本語フォント */
+  font-size:
+    clamp(2rem, 3.5vw, 3.5rem);       /* 画面幅に応じてサイズ変更 */
+  font-weight: 900;                  /* タイトルを太く表示 */
+  line-height: 1.3;                  /* 行間 */
+  letter-spacing: 0.08em;            /* 文字間隔 */
+  color: #fff;                        /* 白色 */
+  margin: 0;                          /* 初期余白をリセット */
+}
+
+
+/* HEROサブタイトル */
+.contact-sub-title {
+  margin-top: 12px;                  /* タイトルとの間隔 */
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;                 /* 小さめに表示 */
+  font-weight: 700;                  /* 太字 */
+  letter-spacing: 0.25em;            /* 英字の文字間隔 */
+  color: rgb(255, 255, 255);   /* 少し薄い白 */
+}
+
+
+/* ==================================================
+   CONTACT SECTION
+   ================================================== */
+
+/* お問い合わせセクション */
+.contact-section {
+  position: relative;                 /* アニメーション基準 */
+  margin-bottom: 100px;               /* 下側の余白 */
+}
+
+
+/* セクションタイトル */
+.contact-section-title {
+  display: none;                      /* 表示しない */
+ /* ================================================== 
+  position: relative;                 緑の装飾の基準 
+  display: inline-block;              文字幅に合わせる 
+  padding-left: 25px;                 左側の装飾との間隔 
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+  font-size:
+    clamp(2rem, 3vw, 2.2rem);         画面幅に応じてサイズ変更 
+  font-weight: 800;                   太字 
+  line-height: 1.3;                   行間 
+  letter-spacing: 0.05em;             文字間隔 
+  color: #fff;                        白色 
+  margin: 0 0 40px;                   下側の余白 
+  ================================================= */
+}
+
+
+/* セクションタイトル左側の緑色装飾 */
+.contact-section-title::before {
+  content: "";                        /* 疑似要素を表示 */
+  position: absolute;                /* タイトルを基準に配置 */
+  left: 0;                            /* 左端 */
+  top: 50%;                           /* 縦中央 */
+  width: 6px;                         /* 装飾の幅 */
+  height: 75%;                       /* 装飾の高さ */
+  transform:
+    translateY(-50%)
+    skewX(-10deg);                    /* 少し斜めにする */
+  background: rgba(0, 167, 60, 0.85); /* 緑色 */
+  filter: blur(8px);                  /* managementページと同じぼかし */
+}
+
+
+/* ==================================================
+   CONTACT DOCUMENT
+   お問い合わせフォーム全体のパネル
+   ================================================== */
+
+/* フォームを包む半透明パネル */
+.contact-document {
+  width: clamp(65%, 75vw, 75%);       /* PCでは管理ページと同程度の幅 */
+  margin: 0 auto;                     /* 中央配置 */
+  padding: 50px 5%;                   /* 内側の余白 */
+  background:
+    rgba(255, 255, 255, 0.733);     /* managementページのdocumentと同じ明るい半透明背景 */
+  border:
+    1px solid rgba(255, 255, 255, 0.18);    /* 薄い白色の境界線 */
+  color: #333;                        /* 入力エリア内の基本文字色 */
+  box-sizing: border-box;             /* paddingとborderを幅に含める */
+}
+
+
+/* フォーム上部の説明文 */
+.contact-document-lead {
+  margin: 0 0 45px;                   /* 下側の余白 */
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+  font-size:
+    clamp(1rem, 1.2vw, 1.15rem);      /* 画面幅に応じて変更 */
+  font-weight: 600;                  /* 少し太く表示 */
+  line-height: 1.8;                  /* 行間 */
+  letter-spacing: 0.04em;            /* 文字間隔 */
+  color: #333;                        /* 濃い文字色 */
+}
+
+/* ==================== お問い合わせ案内文 ==================== */
+
+/*
+ * お問い合わせ案内文全体
+ */
+.contact-form-lead {
+  margin: 0;
+}
+
+
+/*
+ * 案内文の各行
+ * 左側にマークを置くための余白を確保する
+ */
+.contact-form-lead p {
+  position: relative;
+  font-weight: 500;
+  margin: 0;
+  padding-left: 1.4em;
+  line-height: 2;
+}
+
+
+/*
+ * 各行の先頭に緑色のマークを表示する
+ */
+.contact-form-lead p::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00a73c;
+  font-weight: 700;
+}
+ 
+/* ==================================================
+   CONTACT FORM
+   ================================================== */
+
+/* フォーム本体 */
+.contact-form {
+  width: 100%;                        /* パネルいっぱい */
+  margin: 0;                          /* 初期余白をリセット */
+}
+
+
+/* 各入力項目 */
+.contact-form-row {
+  display: grid;                      /* ラベルと入力欄を2列にする */
+  grid-template-columns:
+    minmax(180px, 30%)
+    minmax(0, 1fr);                   /* 左側30%、右側残り */
+  gap: 30px;                          /* ラベルと入力欄の間隔 */
+  align-items: center;                /* 縦方向中央 */
+  padding: 25px 0;                    /* 上下の余白 */
+  border-bottom:
+    1px solid rgba(0, 0, 0, 0.14);    /* 各項目の区切り線 */
+}
+
+
+/* 最初の入力項目 */
+.contact-form-row:first-child {
+  border-top:
+    1px solid rgba(0, 0, 0, 0.14);
+  /* フォーム上端にも区切り線を表示 */
+}
+
+
+/* お問い合わせ内容の行 */
+.contact-form-row-message {
+  align-items: flex-start;            /* textareaでは上揃え */
+}
+
+
+/* ==================================================
+   LABEL
+   ================================================== */
+
+/* 項目名 */
+.contact-form-label {
+  display: flex;                      /* 文字と必須表示を配置 */
+  align-items: center;                /* 縦方向中央 */
+  flex-wrap: wrap;                    /* 狭い画面では折り返し可能 */
+  gap: 10px;                          /* 文字と必須の間隔 */
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+  font-size:
+    clamp(0.95rem, 1.1vw, 1.1rem);
+  font-weight: 700;                  /* 項目名を太く表示 */
+  line-height: 1.6;                  /* 行間 */
+  color: #333;                        /* 濃い文字色 */
+}
+
+
+/* ==================================================
+   必須表示
+   ================================================== */
+
+/* 必須ラベル */
+.contact-required {
+  display: inline-flex;               /* 中央配置 */
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;                    /* 最低幅 */
+  height: 23px;                       /* 高さ */
+  padding: 0 7px;                     /* 左右の余白 */
+  border-radius: 2px;                 /* 少しだけ角を丸くする */
+  background: #00a73c;                /* サイトアクセントカラー */
+  color: #fff;                        /* 白文字 */
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+  font-size: 0.7rem;                 /* 小さく表示 */
+  font-weight: 700;                  /* 太字 */
+  line-height: 1;                    /* 行高さ */
+}
+
+
+/* ==================================================
+   INPUT
+   ================================================== */
+
+/* 入力欄を包む領域 */
+.contact-form-input-wrap {
+  width: 100%;                        /* 入力欄いっぱい */
+}
+
+
+/* 文字入力欄 */
+.contact-input {
+  width: 100%;                        /* 親要素いっぱい */
+  min-height: 52px;                   /* 入力しやすい高さ */
+  padding:
+    13px
+    16px;
+  border:
+    1px solid rgba(0, 0, 0, 0.22);  /* 通常時の境界線 */
+  border-radius: 0;                  /* 管理ページの雰囲気に合わせて角を丸めない */
+  background:
+    rgba(255, 255, 255, 0.88);      /* 白に近い入力背景 */
+  color: #333;                        /* 入力文字 */
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+  font-size:
+    0.95rem;
+  font-weight: 500;
+  line-height: 1.6;
+  outline: none;                      /* ブラウザ標準の枠を削除 */
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* ==================================================
+   TEXTAREA
+   ================================================== */
+
+/* お問い合わせ内容入力欄 */
+.contact-textarea {
+  width: 100%;                        /* 横幅いっぱい */
+  min-height: 220px;                  /* 十分な入力高さ */
+  padding:
+    15px
+    16px;
+  border:
+    1px solid rgba(0, 0, 0, 0.22);
+  border-radius: 0;
+  background:
+    rgba(255, 255, 255, 0.88);
+  color: #333;
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.8;
+  resize: vertical;                   /* 縦方向のみサイズ変更可能 */
+  outline: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* ==================================================
+   INPUT / TEXTAREA フォーカス
+   ================================================== */
+
+/* 入力欄をクリックしたとき */
+.contact-input:focus,
+.contact-textarea:focus {
+  border-color:
+    rgba(0, 167, 60, 0.85);   /* 緑色の境界線 */
+  background:
+    rgba(255, 255, 255, 0.98);    /* 少し明るくする */
+  box-shadow:
+    0 0 0 3px rgba(0, 167, 60, 0.12);   /* 薄い緑色のフォーカスリング */
+}
+
+
+/* ==================================================
+   PLACEHOLDER
+   ================================================== */
+
+/* プレースホルダー */
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  color: rgba(0, 0, 0, 0.42);         /* 薄いグレー */
+}
+
+
+/* ==================================================
+   SUBMIT
+   ================================================== */
+
+/* 送信ボタンを配置するエリア */
+.contact-submit-area {
+  display: flex;                      /* ボタンを配置 */
+  justify-content: center;            /* 中央配置 */
+  padding-top: 45px;                  /* 上側の余白 */
+}
+
+
+/* 送信ボタン */
+.contact-submit-button {
+  position: relative;                 /* ホバー演出の基準 */
+  min-width: 240px;                   /* ボタンの横幅 */
+  min-height: 60px;                   /* ボタンの高さ */
+  padding:
+    0
+    35px;
+  border:
+    1px solid rgba(0, 167, 60, 0.9);  /* 緑色の境界線 */
+  background:
+    #00a73c;    /* サイトアクセントカラー */
+  color: #fff;                        /* 白文字 */
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* ボタン内文字 */
+.contact-submit-button span {
+  position: relative;                 /* 前面表示 */
+  z-index: 1;                         /* 背景エフェクトより前面 */
+}
+
+/* 送信ボタンホバー */
+.contact-submit-button:hover {
+  background: #008c32;                /* 少し濃い緑 */
+  border-color: #008c32;              /* 枠線も濃くする */
+  transform: translateY(-2px);          /* 少し上へ移動 */
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.18);   /* 浮いて見える影 */
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 1024px) {
+
+  /* フォームパネルを少し広くする */
+  .contact-document {
+    width: 85%;
+    padding: 45px 5%;
+  }
+
+  /* 入力行の間隔 */
+  .contact-form-row {
+    gap: 25px;
+  }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+
+  /* お問い合わせページ全体 */
+  .section-contact {
+    padding:
+      110px
+      5%
+      80px;
+  }
+
+  /* HERO */
+  .contact-hero {
+    min-height: 280px;
+    margin-bottom: 70px;
+    padding: 45px 0;
+  }
+
+  /* HEROタイトル */
+  .contact-title {
+    font-size:
+      clamp(2rem, 8vw, 3rem);
+  }
+
+  /* セクション */
+  .contact-section {
+    margin-bottom: 70px;
+  }
+
+  /* セクションタイトル */
+  .contact-section-title {
+    margin-bottom: 30px;
+    padding-left: 20px;
+    font-size:
+      clamp(1.7rem, 6vw, 2.1rem);
+  }
+
+  /* フォームパネル */
+  .contact-document {
+    width: 100%;
+    padding:
+      35px
+      25px;
+  }
+
+  /* 説明文 */
+  .contact-document-lead {
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+  }
+
+  /* 各入力行 */
+  .contact-form-row {
+    display: block;
+    padding:
+      20px
+      0;
+  }
+
+  /* ラベル */
+  .contact-form-label {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+  }
+
+  /* 入力欄 */
+  .contact-input {
+    min-height: 50px;
+  }
+
+  /* textarea */
+  .contact-textarea {
+    min-height: 200px;
+  }
+
+  /* 送信エリア */
+  .contact-submit-area {
+    padding-top: 35px;
+  }
+
+  /* 送信ボタン */
+  .contact-submit-button {
+    width: 100%;
+    min-width: 0;
+    min-height: 56px;
+  }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 480px) {
+
+  /* お問い合わせページ */
+  .section-contact {
+    padding:
+      100px
+      5%
+      70px;
+  }
+
+  /* HERO */
+  .contact-hero {
+    min-height: 240px;
+    margin-bottom: 55px;
+  }
+
+  /* HEROタイトル */
+  .contact-title {
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* サブタイトル */
+  .contact-sub-title {
+    font-size: 0.7rem;
+  }
+
+  /* セクションタイトル */
+  .contact-section-title {
+    font-size: 1.6rem;
+  }
+
+  /* フォーム */
+  .contact-document {
+    padding:
+      30px
+      20px;
+  }
+
+  /* 説明文 */
+  .contact-document-lead {
+    font-size: 0.9rem;
+  }
+
+  /* 入力欄 */
+  .contact-input,
+  .contact-textarea {
+    font-size: 0.9rem;
+  }
+
+  /* 必須ラベル */
+  .contact-required {
+    min-width: 34px;
+    height: 21px;
+    padding: 0 6px;
+    font-size: 0.65rem;
+  }
+}
+
+/* ==================================================
+   背景画像のアニメーション最適化
+   ================================================== */
+
+.contact-fixed-background {
+  transform: translate3d(0, 0, 0);
+  /* GSAPによる背景移動を滑らかにする */
+}
+
+/* ==================================================
+   CONTACT CONFIRM MODAL
+   お問い合わせ内容確認モーダル
+   ================================================== */
+
+
+/* ==================== モーダル全体 ==================== */
+
+.contact-modal {
+    position: fixed;                    /* 画面全体に固定表示する */
+    inset: 0;                           /* 上下左右を画面いっぱいにする */
+    z-index: 99999;                     /* フッターのパララックスより最前面に表示する */
+    isolation: isolate;                 /* モーダル自身の重なり順を独立させる */
+
+    display: flex;                      /* 確認画面を中央配置する */
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;                      /* スマートフォンでも端に余白を確保する */
+
+    opacity: 0;                         /* 初期状態では透明 */
+    visibility: hidden;                 /* 初期状態では非表示 */
+    pointer-events: none;              /* 非表示時は操作できない */
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+  body:has(.contact-modal.is-open) .footer {
+    z-index: 0 !important;
+    }
+
+
+  /*
+    モーダルはサイト内の他の要素より
+    確実に最前面へ表示します。
+  */
+  body:has(.contact-modal.is-open) .contact-modal {
+    z-index: 2147483647 !important;
+    }
+
+
+/* ==================== モーダル表示状態 ==================== */
+
+.contact-modal.is-open {
+    opacity: 1;                              /* モーダルを表示する */
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* ==================== 背景 ==================== */
+
+.contact-modal-overlay {
+    position: absolute;                      /* モーダル本体の背面に配置する */
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);         /* 背景を暗くする */
+    backdrop-filter: blur(5px);              /* 背景ページを少しぼかす */
+}
+
+
+/* ==================== 確認画面本体 ==================== */
+
+.contact-modal-content {
+    position: relative;                      /* ボタンなどの配置基準にする */
+    z-index: 1;
+    width: min(800px, 100%);                 /* PCでは最大800px */
+    max-height: 90vh;                        /* 縦方向に長くなりすぎないようにする */
+    overflow-y: auto;                        /* 内容が多い場合は内部スクロール */
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.94);         /* 黒を基調にする */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    transform: translateY(20px);             /* 初期状態では少し下 */
+    transition: transform 0.4s ease;
+}
+
+/* モーダル表示時に本来の位置へ移動 */
+
+.contact-modal.is-open .contact-modal-content {
+    transform: translateY(0);
+}
+
+/* ==================== タイトル ==================== */
+
+.contact-modal-title {
+    margin: 0 0 15px;
+    color: #fff;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+
+/* ==================== 確認メッセージ ==================== */
+
+.contact-modal-message {
+    margin: 0 0 30px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+
+/* ==================== 入力内容一覧 ==================== */
+
+.contact-confirm-list {
+    margin-bottom: 35px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* ==================== 入力内容1行 ==================== */
+
+.contact-confirm-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* ==================== 項目名 ==================== */
+
+.contact-confirm-label {
+    padding: 18px;
+    background: rgba(0, 167, 60, 0.25);
+    font-weight: 700;
+}
+
+
+/* ==================== 入力内容 ==================== */
+
+.contact-confirm-value {
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+}
+
+
+/* ==================== お問い合わせ内容 ==================== */
+
+.contact-confirm-row--message .contact-confirm-value {
+    min-height: 120px;
+}
+
+
+/* ==================== ボタンエリア ==================== */
+
+.contact-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* ==================== 確認画面ボタン共通 ==================== */
+
+.contact-modal-button {
+    min-width: 180px;
+    padding: 15px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* ==================== 修正するボタン ==================== */
+
+.contact-modal-button--back {
+    background: transparent;
+    color: #fff;
+}
+
+/* 修正するボタンのホバー */
+.contact-modal-button--back:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ==================== 送信するボタン ==================== */
+
+.contact-modal-button--submit {
+    background: #00a73c;
+    color: #fff;
+    border-color: #00a73c;
+}
+
+
+/* 送信するボタンのホバー */
+
+.contact-modal-button--submit:hover {
+    background: #008f34;
+    border-color: #008f34;
+}
+
+
+/* ==================== スマートフォン ==================== */
+
+@media (max-width: 768px) {
+
+    .contact-modal {
+        padding: 20px;
+    }
+
+    .contact-modal-content {
+        padding: 30px 20px;
+        max-height: 92vh;
+    }
+
+    .contact-confirm-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-confirm-label {
+        padding: 12px 15px;
+    }
+
+    .contact-confirm-value {
+        padding: 12px 15px;
+    }
+
+    .contact-modal-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .contact-modal-button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,433 @@
+/* ==================================================
+   THANKS PAGE
+   お問い合わせ完了ページ専用スタイル
+   ================================================== */
+
+
+/* ==================== 完了ページ全体 ==================== */
+
+/*
+   お問い合わせ完了ページ全体の基本設定です。
+   contact.htmlと同じように黒をベースにして、
+   背景画像を重ねます。
+*/
+
+.section-thanks {
+  position: relative;
+  min-height: 100vh;
+
+  padding: 150px 7% 120px;
+
+  background: #00a73c;  /* 背景の色の基準 */
+  color: #fff;
+
+  isolation: isolate;
+  overflow: hidden;
+}
+
+
+/* ==================== 固定背景画像 ==================== */
+
+/*
+   contact.htmlと同じCompany-bg.jpgを使用します。
+
+   背景画像の上に黒いグラデーションを重ねることで、
+   白文字を読みやすくしています。
+*/
+
+.thanks-fixed-background {
+  position: fixed;
+
+  top: -20%;
+  right: 0;
+  bottom: -8%;
+  left: 0;
+
+  z-index: -2;
+
+  background-color: #00a73c;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.42) 55%,
+      rgba(0, 0, 0, 0.72) 100%
+    ),
+    url("../images/Company-bg.jpg");
+
+  background-position: 100% center; /* 背景画像の表示位置を右へ移動する */
+  background-size: cover;           /* 背景画像をエリア全体に表示する */
+  background-repeat: no-repeat;     /* 背景画像を繰り返し表示しない */
+
+  pointer-events: none;
+
+  will-change: transform;
+
+  transform: translate3d(0, 0, 0);
+}
+
+
+/*
+   背景画像の端が見えないようにするための補助レイヤーです。
+*/
+
+.thanks-fixed-background::after {
+  content: "";
+
+  position: absolute;
+
+  top: -10%;
+  right: 0;
+  bottom: -10%;
+  left: 0;
+
+  background: inherit;
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+
+/* ==================== ページ内容 ==================== */
+
+.thanks-page-content {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+}
+
+
+/* ==================== ページタイトル ==================== */
+
+.thanks-hero {
+  position: relative;
+
+  min-height: 360px;
+
+  margin-bottom: 100px;
+
+  padding: 60px 7%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* ==================== 英字サブタイトル ==================== */
+
+.thanks-sub-title {
+  margin: 0 0 18px;
+
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 0.8rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+
+  color: #fff;
+}
+
+
+/* ==================== メインタイトル ==================== */
+
+.thanks-title {
+  margin: 0;
+
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+
+  font-weight: 900;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.04em;
+
+  color: #fff;
+}
+
+
+/* ==================== 完了セクション ==================== */
+
+.thanks-section {
+  position: relative;
+
+  width: 100%;
+
+  margin-bottom: 100px;
+}
+
+
+/* ==================== 完了内容の枠 ==================== */
+
+/*
+   contact.htmlのフォーム部分と同じように、
+   半透明の黒い背景を使用します。
+*/
+
+.thanks-document {
+  width: 80%;
+
+  margin: 0 auto;
+
+  padding: 60px 50px;
+
+  background: rgba(0, 0, 0, 0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-sizing: border-box;
+
+  backdrop-filter: blur(8px);
+
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* ==================== 完了メッセージ ==================== */
+
+.thanks-message {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+
+/* ==================== 完了メッセージ見出し ==================== */
+
+.thanks-message h2 {
+  margin: 0 0 40px;
+
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+
+  font-weight: 700;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.05em;
+
+  color: #fff;
+}
+
+
+/* ==================== 完了メッセージ本文 ==================== */
+
+.thanks-message p {
+  margin: 0 0 22px;
+
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  line-height: 2;
+
+  letter-spacing: 0.04em;
+
+  color: #fff;
+}
+
+
+/* ==================== 戻るボタン ==================== */
+
+.thanks-button-wrap {
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 50px;
+}
+
+
+/* ==================== ボタン本体 ==================== */
+
+.thanks-button {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 260px;
+
+  min-height: 60px;
+
+  padding: 0 40px;
+
+  box-sizing: border-box;
+
+  background: #00a73c;
+
+  border: 1px solid #00a73c;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+
+  font-size: 0.95rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+/* ==================== ボタンホバー ==================== */
+
+.thanks-button:hover {
+  background: transparent;
+
+  color: #00a73c;
+
+  border-color: #00a73c;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media screen and (max-width: 1024px) {
+
+  .thanks-document {
+    width: 90%;
+  }
+
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media screen and (max-width: 768px) {
+
+  /* ==================== 完了ページ ==================== */
+
+  .section-thanks {
+    padding: 130px 5% 100px;
+  }
+
+
+  /* ==================== タイトル ==================== */
+
+  .thanks-hero {
+    min-height: 280px;
+
+    margin-bottom: 60px;
+
+    padding: 40px 5%;
+  }
+
+
+  /* ==================== 完了内容 ==================== */
+
+  .thanks-document {
+    width: 100%;
+
+    padding: 40px 25px;
+  }
+
+
+  /* ==================== メッセージ ==================== */
+
+  .thanks-message h2 {
+    margin-bottom: 30px;
+
+    font-size: 1.3rem;
+
+    line-height: 1.8;
+  }
+
+
+  .thanks-message p {
+    font-size: 0.9rem;
+
+    line-height: 2;
+  }
+
+
+  /* ==================== 戻るボタン ==================== */
+
+  .thanks-button-wrap {
+    margin-top: 40px;
+  }
+
+
+  .thanks-button {
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 58px;
+
+    padding: 0 20px;
+  }
+
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media screen and (max-width: 480px) {
+
+  .section-thanks {
+    padding: 120px 5% 80px;
+  }
+
+
+  .thanks-hero {
+    min-height: 240px;
+
+    padding: 30px 5%;
+  }
+
+
+  .thanks-document {
+    padding: 30px 20px;
+  }
+
+
+  .thanks-message h2 {
+    font-size: 1.15rem;
+  }
+
+
+  .thanks-message p {
+    font-size: 0.85rem;
+  }
+
+}

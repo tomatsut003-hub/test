@@ -1,0 +1,743 @@
+/* ==================================================
+   MANAGEMENT PAGE
+   安全への取り組みページ専用スタイル
+   ================================================== */
+
+
+/* ==================== 安全への取り組みページ全体 ==================== */
+
+.section-management {
+  position: relative;                /* 背景画像と本文を重ねる基準にする */
+  min-height: 100vh;                 /* ページ全体の最低高さを画面の高さにする */
+  padding: 150px 7% 120px;           /* ヘッダー分を考慮して上下左右に余白を設定する */
+  background: #000;                  /* 背景画像が表示される前の背景色を黒にする */
+  color: #fff;                       /* ページ内の文字色を白にする */
+  isolation: isolate;                /* 背景の重なり順をページ内に限定する */
+  overflow: hidden;                 /* 背景画像や本文がページ外にはみ出さないようにする */
+}
+
+
+/* ==================== 固定背景画像 ==================== */
+
+.management-fixed-background {
+  position: fixed;                  /* 背景画像を画面上部に固定する */
+  top: -20%;                         /* 上下移動時に画像の外側が見えないように余白を作る */
+  right: 0;                          /* 画面右端から0pxの位置に配置する */
+  bottom: -8%;                       /* 上下移動時に画像の外側が見えないように余白を作る */
+  left: 0;                           /* 画面左端から0pxの位置に配置する */
+  z-index: -2;                       /* 本文より背面に配置する */
+  background-color: #00a73c;         /* 画像読み込み前の背景色を緑にする */
+  background-image:                 /* 背景画像と暗いグラデーションを指定する */
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.42) 50%,
+      rgba(0, 0, 0, 0.72) 100%
+    ),
+    url("../images/Company-bg.jpg");
+  background-position: 40% center;  /* 背景画像の表示位置を少し右へ移動する */
+  background-repeat: no-repeat;      /* 背景画像を繰り返し表示しない */
+  background-size: cover;            /* 背景画像をエリア全体に表示する */
+  pointer-events: none;              /* 背景画像がマウス操作を邪魔しないようにする */
+  will-change: transform;            /* スクロール時の移動を滑らかにする */
+}
+
+
+/* ==================== 安全への取り組みページ本文 ==================== */
+
+.management-page-content {
+  position: relative;                /* 固定背景画像より前面に配置する */
+  z-index: 1;                        /* 本文を背景画像より前面に表示する */
+  width: 100%;                       /* 親要素の幅いっぱいに広げる */
+  max-width: 1400px;                 /* 本文エリアの最大幅を設定する */
+  margin: 0 auto;                    /* 本文エリアを中央配置する */
+}
+
+
+/* ==================== MANAGEMENT HERO ==================== */
+
+.management-hero {
+  position: relative;                /* HERO内の文字を配置する基準にする */
+  display: flex;                     /* 子要素をFlexboxで配置する */
+  align-items: center;               /* 子要素を上下中央に配置する */
+  min-height: 360px;                 /* HEROエリアの最低高さを設定する */
+  margin-bottom: 100px;              /* HERO下側に余白を設定する */
+  padding: 60px 7%;                  /* HERO内側の上下左右に余白を設定する */
+  overflow: hidden;                  /* 内容がHERO外にはみ出さないようにする */
+  background: transparent;           /* 四角い透明な背景を削除する */
+  border: none;                      /* 四角い枠線を削除する */
+}
+
+
+/* ==================== MANAGEMENT HERO 背景装飾を削除 ==================== */
+
+.management-hero::before {
+  display: none;                     /* HERO全体に重ねていた装飾を非表示にする */
+}
+
+
+/* ==================== MANAGEMENT HERO 文字エリア ==================== */
+
+.management-hero-content {
+  position: relative;                /* 装飾より前面に配置する */
+  z-index: 1;                        /* 文字を装飾より前面に表示する */
+  width: 100%;                       /* 親要素の幅いっぱいに広げる */
+}
+
+
+/* ==================== MANAGEMENTタイトル ==================== */
+
+.management-title {
+  margin: 0;                         /* 見出しの初期余白を削除する */
+  font-family: "Montserrat", "Noto Sans JP", sans-serif;
+                                     /* 英数字と日本語のフォントを指定する */
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+                                     /* 画面幅に合わせてタイトルサイズを変更する */
+  font-weight: 900;                  /* タイトルを太字で表示する */
+  line-height: 1.1;                  /* タイトルの行間を設定する */
+  letter-spacing: 0.08em;            /* 文字間隔を少し広げる */
+}
+
+
+/* ==================== MANAGEMENTサブタイトル ==================== */
+
+.management-sub-title {
+  margin-top: 20px;                  /* タイトルとの間に余白を設定する */
+  font-family: "Montserrat", sans-serif;
+                                     /* 英字用フォントを指定する */
+  font-size: 0.8rem;                 /* 英字サブタイトルの文字サイズを設定する */
+  font-weight: 700;                  /* サブタイトルを太字で表示する */
+  letter-spacing: 0.18em;            /* 英字の文字間隔を広げる */
+}
+
+
+/* ==================== 安全への取り組みページ各セクション ==================== */
+
+.management-section {
+  margin-bottom: 100px;              /* 各セクションの下側に余白を設定する */
+}
+
+
+/* ==================== 安全への取り組みページセクションタイトル ==================== */
+
+.management-section-title {
+  position: relative;                /* 左側の装飾線を配置する基準にする */
+  display: inline-block;             /* 文字の幅に合わせる */
+  margin: 0 0 40px;                  /* 見出しの下側に余白を設定する */
+  padding-left: 25px;                /* 左側の装飾線分の余白を設定する */
+  font-family: "Montserrat", "Noto Sans JP", sans-serif;
+                                     /* 見出し用フォントを指定する */
+  font-size: clamp(2rem, 2.25vw, 2.2rem);
+                                     /* 画面幅に合わせて見出しサイズを変更する */
+  font-weight: 800;                  /* 見出しを太字で表示する */
+  line-height: 1.3;                  /* 見出しの行間を設定する */
+  letter-spacing: 0.05em;            /* 文字間隔を少し広げる */
+  z-index: 1;
+}
+
+
+/* ==================== セクションタイトル装飾線 ==================== */
+
+.management-section-title::before {
+  position: absolute;
+  top: 50%;
+  left: 13px;                                     /* 左からの位置 */
+  width: 100%;                                    /* タイトル自身の幅いっぱいにする */
+  height: 100%;
+  transform: translateY(-50%) skewX(-18deg);      /* 左右を斜めにして平行四辺形にする */
+  background: rgba(0, 167, 60, 0.28);           /* 透過した緑色の背景 */
+  backdrop-filter: blur(8px);                     /* 背面の背景画像をぼかす */
+  -webkit-backdrop-filter: blur(8px);
+  content: "";                                    /* 疑似要素として表示 */
+  z-index: -1;                                    /* 文字の背面に配置 */
+}
+
+
+/* ==================== 導入文 ==================== */
+
+.management-introduction {
+  width: 80%;                        /* 本文エリアを少し狭くして読みやすくする */
+  margin: 0 auto;                    /* 本文エリアを中央配置する */
+  padding: 50px;                     /* 内側の余白を設定する */
+  background: rgba(255, 254, 254, 0.3);     /* 背景を少し暗くする */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+                                     /* 薄い枠線を表示する */
+  /*backdrop-filter: blur(8px);         背景画像をぼかして文字を見やすくする */
+}
+
+
+/* ==================== 導入文の段落 ==================== */
+
+.management-introduction p {
+  margin: 0;                         /* 段落の初期余白を削除する */
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+                                     /* 画面幅に合わせて本文サイズを変更する */
+  font-weight: 400;                  /* 本文文字の太さを設定する */
+  line-height: 2;                    /* 本文の行間を設定する */
+  letter-spacing: 0.04em;            /* 文字間隔を少し広げる */
+}
+
+
+/* ==================== 導入文の段落間隔 ==================== */
+
+.management-introduction p + p {
+  margin-top: 25px;                  /* 2つ目以降の段落上側に余白を設定する */
+}
+
+
+/* ==================== 安全管理テーブル ==================== */
+
+.management-table {
+  width: 100%;                       /* テーブルを親要素の幅いっぱいに広げる */
+  border-collapse: collapse;         /* セル同士の境界線を重ねて表示する */
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+                                     /* テーブル上部に境界線を表示する */
+  background: rgba(0, 0, 0, 0.28);   /* テーブルの背景を少し暗くする */
+  /* backdrop-filter: blur(8px);        背景画像をぼかして文字を見やすくする */
+}
+
+
+/* ==================== 安全管理テーブル行 ==================== */
+
+.management-table tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+                                     /* 各行の下側に境界線を表示する */
+}
+
+
+/* ==================== 安全管理テーブル見出し ==================== */
+
+.management-table th {
+  width: 30%;                        /* 見出し列の幅を設定する */
+  padding: 24px 30px;                /* セル内側の上下左右に余白を設定する */
+  background: rgba(0, 167, 60, 0.28);
+                                     /* 見出しセルの背景を薄い緑にする */
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+                                     /* 画面幅に合わせて文字サイズを変更する */
+  font-weight: 700;                  /* 見出し文字を太字にする */
+  line-height: 1.8;                  /* 見出し文字の行間を設定する */
+  text-align: left;                  /* 見出し文字を左揃えにする */
+  vertical-align: top;               /* 文字をセルの上側に揃える */
+}
+
+
+/* ==================== 安全管理テーブル内容 ==================== */
+
+.management-table td {
+  padding: 24px 30px;                /* セル内側の上下左右に余白を設定する */
+  background: rgba(0, 0, 0, 0.18);   /* 内容セルの背景を少し暗くする */
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+                                     /* 画面幅に合わせて文字サイズを変更する */
+  font-weight: 400;                  /* 本文文字の太さを設定する */
+  line-height: 1.8;                  /* 本文文字の行間を設定する */
+  text-align: left;                  /* 本文文字を左揃えにする */
+  vertical-align: top;               /* 文字をセルの上側に揃える */
+}
+
+
+/* ==================== 安全重点施策一覧 ==================== */
+
+.management-list {
+  display: grid;                     /* 項目を縦方向に配置する */
+  gap: 20px;                         /* 各項目の間隔を設定する */
+  margin: 0;                         /* 初期余白を削除する */
+  padding-left: 2.2em;               /* 番号表示分の左側余白を設定する */
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+                                     /* 画面幅に合わせて本文サイズを変更する */
+  font-weight: 400;                  /* 本文文字の太さを設定する */
+  line-height: 2;                    /* 本文の行間を設定する */
+  letter-spacing: 0.04em;            /* 文字間隔を少し広げる */
+}
+
+
+/* ==================== 安全重点施策番号 ==================== */
+
+.management-list li::marker {
+  color: #00a73c;                    /* 番号を緑色で表示する */
+  font-weight: 700;                  /* 番号を太字で表示する */
+}
+
+/* ==================== 安全最優先意識の周知 施策の内容列 ==================== */
+
+/* 「安全最優先意識の周知」の「施策の内容」列だけを緑色にする */
+.management-plan-safety-awareness .management-table td:first-child {
+  background: rgba(0, 167, 60, 0.28);
+  /* 「施策の内容」列だけを既存の見出しと同じ緑色にする */
+   font-weight: 600;                  /* 他の見出しと同じ太さに調整 */
+}
+
+/* ==================== タブレット表示 ==================== */
+
+@media (max-width: 1024px) {
+
+  .section-management {
+    padding: 130px 5% 100px;          /* タブレット用にページの余白を調整する */
+  }
+
+  .management-hero {
+    min-height: 320px;                /* HEROの最低高さを少し小さくする */
+    margin-bottom: 80px;              /* HERO下側の余白を調整する */
+    padding: 50px 6%;                 /* HERO内側の余白を調整する */
+  }
+
+  .management-introduction {
+    width: 90%;                       /* タブレット用に本文幅を調整する */
+    padding: 40px;                    /* 内側の余白を調整する */
+  }
+
+  .management-section {
+    margin-bottom: 80px;              /* セクション間の余白を調整する */
+  }
+
+}
+
+
+/* ==================== スマートフォン表示 ==================== */
+
+@media (max-width: 768px) {
+
+  /* ==================== MANAGEMENTタイトル ==================== */
+
+  .management-title {
+    font-size: clamp(2.2rem, 10vw, 3rem);
+                                     /* スマートフォン用のタイトルサイズ */
+  }
+
+
+  /* ==================== MANAGEMENTサブタイトル ==================== */
+
+  .management-sub-title {
+    font-size: 0.75rem;               /* サブタイトルを適度な大きさにする */
+  }
+
+
+  /* ==================== セクションタイトル ==================== */
+
+  .management-section-title {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+                                     /* スマートフォン用の見出しサイズ */
+  }
+
+
+  /* ==================== 導入文 ==================== */
+
+  .management-introduction {
+    width: 100%;                      /* スマートフォンでは横幅を画面いっぱいにする */
+    padding: 30px 25px;               /* スマートフォン用に内側の余白を調整する */
+  }
+
+
+  /* ==================== 導入文本文 ==================== */
+
+  .management-introduction p {
+    font-size: 1rem;                  /* スマートフォン用の本文サイズ */
+    line-height: 2;                   /* スマートフォン用の行間を設定する */
+  }
+
+
+  /* ==================== 安全管理テーブル見出し ==================== */
+
+  .management-table th {
+    width: 30%;                       /* スマートフォン用の見出し列幅 */
+    padding: 20px 15px;               /* セル内側の余白を調整する */
+    font-size: 0.95rem;               /* テーブル見出しを読みやすくする */
+  }
+
+
+  /* ==================== 安全管理テーブル内容 ==================== */
+
+  .management-table td {
+    padding: 20px 15px;               /* セル内側の余白を調整する */
+    font-size: 0.95rem;               /* テーブル本文を読みやすくする */
+    line-height: 1.8;                 /* スマートフォン用の行間を設定する */
+  }
+
+
+  /* ==================== 安全重点施策一覧 ==================== */
+
+  .management-list {
+    gap: 16px;                        /* 項目同士の間隔を調整する */
+    padding-left: 1.8em;              /* 番号表示分の余白を調整する */
+    font-size: 1rem;                  /* スマートフォン用の本文サイズ */
+    line-height: 2;                   /* スマートフォン用の行間を設定する */
+  }
+
+  
+}
+
+
+/* ==================== 小型スマートフォン表示 ==================== */
+
+@media (max-width: 480px) {
+
+  .section-management {
+    padding: 120px 5% 80px;            /* 小型画面用にページの余白を調整する */
+  }
+
+  .management-title {
+    font-size: 2rem;                  /* 小型スマートフォン用のタイトルサイズ */
+  }
+
+  .management-sub-title {
+    font-size: 0.65rem;               /* サブタイトルの文字サイズを調整する */
+  }
+
+  .management-section-title {
+    font-size: 1.6rem;                /* セクションタイトルのサイズを調整する */
+  }
+
+  .management-introduction {
+    padding: 25px 20px;               /* 小型画面用に内側の余白を調整する */
+  }
+
+  .management-introduction p {
+    font-size: 0.95rem;               /* 小型画面用の本文サイズ */
+    line-height: 1.9;                 /* 小型画面用の行間を設定する */
+  }
+
+  .management-table th {
+    padding: 18px 10px;               /* 小型画面用のセル余白 */
+    font-size: 0.85rem;               /* 小型画面用の見出しサイズ */
+  }
+
+  .management-table td {
+    padding: 18px 10px;               /* 小型画面用のセル余白 */
+    font-size: 0.85rem;               /* 小型画面用の本文サイズ */
+  }
+
+  .management-list {
+    gap: 14px;                        /* 項目同士の間隔を少し狭くする */
+    padding-left: 1.6em;              /* 番号表示分の余白を調整する */
+    font-size: 0.95rem;               /* 小型画面用の本文サイズ */
+    line-height: 1.9;                 /* 小型画面用の行間を設定する */
+  }
+
+}
+
+
+/* ==================== MANAGEMENT 背景画像の上下移動 ==================== */
+
+.section-management {
+  overflow: hidden;                  /* 背景画像や本文がページ外にはみ出さないようにする */
+}
+
+
+/* ==================== MANAGEMENT 背景画像の移動範囲 ==================== */
+
+.management-fixed-background {
+  transform: translate3d(0, 0, 0);
+                                     /* 背景画像を初期位置に配置する */
+}
+
+
+/* ==================== MANAGEMENT 背景画像移動中の表示範囲 ==================== */
+
+.management-fixed-background::after {
+  position: absolute;                /* 背景画像全体に重ねて配置する */
+  top: -10%;                          /* 上側に余白を作る */
+  right: 0;                           /* 右端から0pxに配置する */
+  bottom: -10%;                       /* 下側に余白を作る */
+  left: 0;                            /* 左端から0pxに配置する */
+  background: inherit;                /* 親要素と同じ背景画像を表示する */
+  content: "";                        /* 疑似要素を表示するための空の内容を設定する */
+  pointer-events: none;               /* 疑似要素がマウス操作を邪魔しないようにする */
+}
+
+/* ==================================================
+   安全方針・目標・計画の文書表示
+   ================================================== */
+
+/* ==================== 文書全体 ==================== */
+
+.management-document {
+  width: clamp(65%, 75vw, 75%);                         /* 文書エリアを親要素の幅いっぱいにする */
+  margin-left: auto;                   /* 中央に配置する */
+  margin-right: auto;
+  padding: 45px 5%;                    /* 文書の内側に余白を設定する */
+  background: rgba(255, 255, 255, 0.733);      /* 背景を白くする */
+  border: 1px solid rgba(255, 255, 255, 0.85);
+                                      /* 文書の枠線を表示する */
+  /* backdrop-filter: blur(8px);         背景画像をぼかして文字を見やすくする */
+ /* 文章を濃い色にして読みやすくする */
+    color: #333;
+  }
+
+/* ==================== 文書内の見出し ==================== */
+
+.management-document-heading {
+  margin: 0 0 35px;                   /* 見出しの下側に余白を設定する */
+  color: #00a73c;                      /* 見出しを緑色で表示する */
+  font-size: 1.15rem;                 /* 見出しの文字サイズを設定する */
+  font-weight: 800;                   /* 見出しを太字で表示する */
+  text-align: center;                 /* 見出しを中央揃えにする */
+}
+
+/* ==================== 文書内の導入文 ==================== */
+
+.management-document-lead {
+  margin: 0 0 30px;                   /* 導入文の下側に余白を設定する */
+  font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+                                      /* 画面幅に合わせて文字サイズを変更する */
+  line-height: 2;                     /* 行間を設定する */
+    font-weight: 600;}
+
+/* ==================== 安全方針一覧 ==================== */
+
+.management-policy-list {
+  font-weight: 400;                   /* 本文を太字で表示する */
+  display: grid;                      /* 項目を縦方向に配置する */
+  gap: 30px;                          /* 項目同士の間隔を設定する */
+  margin: 0;                          /* 初期余白を削除する */
+  padding-left: 1.8em;                /* 番号表示分の余白を設定する */
+  font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+                                      /* 画面幅に合わせて文字サイズを変更する */
+  line-height: 2;                     /* 行間を設定する */
+}
+
+.management-policy-list li::marker {
+  color: #00a73c;                     /* 番号を緑色で表示する */
+  font-weight: 700;                   /* 番号を太字で表示する */
+}
+
+.management-policy-list li {
+  padding-left: 8px;                  /* 番号と文章の間を8px広げる */ 
+}
+
+/* ==================== 安全方針の署名 ==================== */
+
+.management-signature {
+  display: flex;                      /* 署名部分を縦方向に配置する */
+  flex-direction: column;             /* 署名情報を縦に並べる */
+  align-items: flex-end;              /* 署名情報を右側に揃える */
+  gap: 12px;                          /* 各行の間隔を設定する */
+  margin-top: 50px;                   /* 本文との間に余白を設定する */
+  font-size: 0.95rem;                 /* 署名情報の文字サイズを設定する */
+  line-height: 1.8;                   /* 行間を設定する */
+  text-align: right;                  /* 署名情報を右揃えにする */
+}
+
+.management-signature p {
+  margin: 0;                          /* 段落の初期余白を削除する */
+}
+
+.management-signature-row {
+  display: flex;                      /* 役職と署名画像を横並びにする */
+  align-items: center;                /* 役職と画像を上下中央に揃える */
+  justify-content: flex-end;          /* 右側に揃える */
+  gap: 20px;                          /* 役職と署名画像の間隔を設定する */
+}
+
+.management-signature-image {
+  display: block;                     /* 画像下側の余白を削除する */
+  width: 220px;                       /* 署名画像の幅を設定する */
+  max-width: 45%;                     /* 画面幅が狭い場合の最大幅を設定する */
+  height: auto;                       /* 画像の縦横比を維持する */
+}
+
+/* ==================== 安全目標一覧 ==================== */
+
+.management-goal-list {
+  display: grid;                      /* 目標を縦方向に配置する */
+  gap: 28px;                          /* 目標同士の間隔を設定する */
+  margin: 0;                          /* 初期余白を削除する */
+  padding-left: 1.8em;                /* 番号表示分の余白を設定する */
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+                                      /* 画面幅に合わせて文字サイズを変更する */
+  line-height: 1.9;                   /* 行間を設定する */
+}
+
+.management-goal-list li::marker {
+  color: #00a73c;                     /* 番号を緑色で表示する */
+  font-weight: 700;                   /* 番号を太字で表示する */
+}
+
+.management-goal-list li {
+  padding-left: 8px;                  /* 番号と文章の間を8px広げる */ 
+}
+
+.management-goal-list strong {
+  display: block;                     /* 目標名を独立した行にする */
+  margin-bottom: 8px;                 /* 目標名と本文の間隔を設定する */
+  font-weight: 700;                   /* 目標名を太字で表示する */
+}
+
+.management-goal-list p {
+  margin: 0;                          /* 段落の初期余白を削除する */
+}
+
+.management-goal-list ul {
+  margin: 10px 0 0;                   /* 箇条書きの上側に余白を設定する */
+  padding-left: 1.5em;                /* 箇条書きの左側余白を設定する */
+}
+
+/* ==================== 安全計画ブロック ==================== */
+
+.management-plan-block {
+  margin-top: 45px;                   /* 各計画の上側に余白を設定する */
+}
+
+.management-plan-block:first-of-type {
+  margin-top: 0;                      /* 最初の計画だけ上側の余白を削除する */
+}
+
+.management-plan-block h3 {
+  margin: 0 0 20px;                   /* 計画見出しの下側に余白を設定する */
+  color: #00a73c;                     /* 計画見出しを緑色で表示する */
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+                                      /* 画面幅に合わせて文字サイズを変更する */
+  font-weight: 700;                   /* 計画見出しを太字で表示する */
+  line-height: 1.7;                   /* 行間を設定する */
+}
+
+/* ==================== 計画用テーブル ==================== */
+
+.management-plan-block .management-table {
+  margin: 0;                          /* 計画用テーブルの外側余白を削除する */
+}
+
+.management-plan-block .management-table th,
+.management-plan-block .management-table td {
+  padding: 16px 20px;                 /* 計画用セルの余白を設定する */
+  font-size: 0.95rem;                 /* 計画用文字サイズを設定する */
+  line-height: 1.7;                   /* 計画用行間を設定する */
+}
+
+.management-plan-block .management-table thead th {
+  background: rgba(0, 167, 60, 0.28);
+                                      /* 表の見出し背景を薄い緑にする */
+  text-align: center;                 /* 表の見出しを中央揃えにする */
+}
+
+/* ==================== 目標・実施期間 ==================== */
+
+/* 画面幅が狭くなった場合も文字を折り返して表内に収める */
+.management-plan-block .management-table td:nth-child(2),
+.management-plan-block .management-table td:nth-child(3) {
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+  /* 長い文字列も表からはみ出さないようにする */
+}
+
+.management-result-note {
+  margin: 25px 0;                     /* 結果説明の上下に余白を設定する */
+  font-size: 0.95rem;                 /* 結果説明の文字サイズを設定する */
+  line-height: 1.8;                   /* 結果説明の行間を設定する */
+}
+
+
+/* ==================== 輸送の安全に関する計画 テーブル ==================== */
+
+/* 既存の横罫線と自然につながる色で、各項目の縦の区切り線を追加する */
+.management-plan-block .management-table th,
+.management-plan-block .management-table td {
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    /* 既存の行の横罫線と同じ色・濃さで縦線を表示する */
+}
+
+
+/* ==================== 計画テーブル左端 ==================== */
+
+/* 一番左の列には余計な左側の縦線を付けない */
+.management-plan-block .management-table th:first-child,
+.management-plan-block .management-table td:first-child {
+    border-left: none;
+}
+
+
+/* ==================== 計画テーブル右端 ==================== */
+
+/* 一番右の列には右側の縦線を追加する */
+.management-plan-block .management-table th:last-child,
+.management-plan-block .management-table td:last-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    /* 既存の罫線と同じ色・濃さで右端を表示する */
+}
+
+
+
+/* ==================== スマートフォン対応 ==================== */
+
+@media (max-width: 768px) {
+
+  .management-document {
+    padding: 30px 20px;               /* スマートフォン用に文書の余白を調整する */
+  }
+
+  .management-policy-list {
+    gap: 22px;                         /* 安全方針の項目間隔を調整する */
+    font-size: 0.95rem;               /* スマートフォン用の文字サイズを設定する */
+    line-height: 1.9;                /* スマートフォン用の行間を設定する */
+  }
+
+  .management-goal-list {
+    gap: 22px;                         /* 目標の項目間隔を調整する */
+    font-size: 0.95rem;               /* スマートフォン用の文字サイズを設定する */
+    line-height: 1.9;                /* スマートフォン用の行間を設定する */
+  }
+
+  .management-signature {
+    align-items: flex-end;            /* 署名を右側に揃える */
+    margin-top: 35px;                 /* 署名上側の余白を調整する */
+    font-size: 0.8rem;                /* 署名情報の文字サイズを調整する */
+  }
+
+  .management-signature-row {
+    gap: 10px;                        /* 役職と署名画像の間隔を調整する */
+  }
+
+  .management-signature-image {
+    width: 170px;                     /* スマートフォン用に署名画像を小さくする */
+    max-width: 55%;                   /* 画面幅に合わせて最大幅を制限する */
+  }
+
+  .management-plan-block {
+    margin-top: 35px;                 /* スマートフォン用に計画間隔を調整する */
+    overflow-x: visible;              /* 画面幅が変わっても横方向へスライドしないようにする */  }
+
+  .management-plan-block .management-table {
+    width: 100%;
+    min-width: 0;
+    /* モバイル時に固定幅を持たせず、画面幅に合わせて縮小する */
+    table-layout: fixed;
+    /* 各列を画面幅に合わせて自動的に収める */
+  }
+
+  /* 表の文字を画面幅に合わせて折り返す */
+  .management-plan-block .management-table th,
+  .management-plan-block .management-table td {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+    .management-document {
+        /* モバイルでは横幅を100%にする */
+        width: 100%;
+
+        /* 中央配置用の余白は不要なので解除 */
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+
+  .management-document {
+    padding: 25px 15px;               /* 小型スマートフォン用に文書の余白を調整する */
+  }
+
+  .management-signature {
+    font-size: 0.72rem;               /* 小型スマートフォン用の署名文字サイズ */
+  }
+
+  .management-signature-image {
+    width: 140px;                     /* 小型スマートフォン用に署名画像を小さくする */
+  }
+
+  .management-plan-block .management-table {
+    min-width: 0px;                 /* 小型画面用のテーブル最低幅を調整する */
+  }
+
+}
